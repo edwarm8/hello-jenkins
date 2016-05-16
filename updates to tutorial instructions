@@ -1,0 +1,7 @@
+Section - Our App Gets Served
+Subsection - Install Our App
+    Enable 'node' to ahve the ability to run on port 90 sans 'sudo'
+    original instructions said to enter command 'sudo setcap cap_net_bind_service=+ep /usr/local/bin/node'
+    error saying "the value of the capability argument is not permitted for a file.  or the file is not a regular (non-symlink) file"
+    changed command to 'sudo setcap cap_net_bind_service=+ep $(readlink -f /usr/bin/node)'
+    I think the file was a symlink and this command tells it where the file that symlink links to
